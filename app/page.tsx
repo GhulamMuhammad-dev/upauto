@@ -1,23 +1,29 @@
-'use client';
-import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
-import { useRouter } from 'next/navigation';
-import { Button } from '@/components/ui/button';
+// src/app/page.tsx
 
-export default function Home() {
-  const router = useRouter();
+import { SignedIn, SignedOut } from "@clerk/nextjs";
+import Link from "next/link";
+import { AuthButtons } from "@/components/AuthButtons";
 
+export default function HomePage() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-6">
-      <h1 className="text-3xl font-bold mb-4">YouTube Auto Uploader</h1>
-      <p className="mb-6">Connect your Google Drive, select videos, and schedule uploads automatically.</p>
+    <main className="flex flex-col items-center justify-center min-h-screen p-6">
+      <h1 className="text-4xl font-bold mb-4">🎬 Welcome to AutoTube</h1>
+      <p className="text-lg text-gray-700 mb-6 text-center max-w-xl">
+        AutoTube helps you schedule and upload videos from Google Drive to
+        YouTube.
+      </p>
+
       <SignedOut>
-        <SignInButton mode="modal">
-          <Button>Sign In / Sign Up</Button>
-        </SignInButton>
+        <AuthButtons />
       </SignedOut>
+
       <SignedIn>
-        <UserButton />
-        <Button className="mt-4" onClick={() => router.push('/dashboard')}>Go to Dashboard</Button>
+        <Link
+          href="/dashboard"
+          className="text-blue-600 underline hover:text-blue-800 transition"
+        >
+          Go to Dashboard →
+        </Link>
       </SignedIn>
     </main>
   );

@@ -1,17 +1,17 @@
+import './globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
 import { Inter } from 'next/font/google';
-import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'YouTube AutoUploader',
-  description: 'Upload videos from Drive to YouTube automatically',
+  title: 'Video Uploader',
+  description: 'Schedule and upload videos from Google Drive to YouTube',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <ClerkProvider>
+     <ClerkProvider>
       <html lang="en">
         <body className={inter.className}>{children}</body>
       </html>
